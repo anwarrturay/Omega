@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Omega/static/css/main.f2e1106e.css",
+    "main.js": "/Omega/static/js/main.30f250f4.js",
+    "index.html": "/Omega/index.html",
+    "main.f2e1106e.css.map": "/Omega/static/css/main.f2e1106e.css.map",
+    "main.30f250f4.js.map": "/Omega/static/js/main.30f250f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2e1106e.css",
+    "static/js/main.30f250f4.js"
+  ]
+}
