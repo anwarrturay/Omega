@@ -1,16 +1,23 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 import InputArea from './components/InputArea';
 import LineItems from './components/LineItems';
-import { DataProvider } from './hooks/DataContext';
+// import Counter from './Features/Counter/Counter';
+import Footer from './components/Footer';
+import Header from './components/Header';
 function App() {
+  
 
   return (
-    <DataProvider>
-        <div className="App">
-          <InputArea />
-          <LineItems />
-        </div>
-    </DataProvider>
+    <div className='relative'>
+      <Header />
+      <main>
+        <InputArea />
+        
+        <LineItems />
+        {/* <Counter /> */}
+      </main>
+      <Footer />
+    </div>
   );
 }
 
