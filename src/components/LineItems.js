@@ -1,12 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { deleteItemById, updateItemById, selectItemById } from '../Features/itemsSlice';
 import { useSelector, useDispatch } from 'react-redux';
 const LineItems = ({ searchResults }) => {
   const [editId, setEditId] = useState(null);
   const item = useSelector((state)=> selectItemById(state, editId));
   const dispatch = useDispatch();
-  const [editedName, setEditedName] = useState(item?.name);
-  const [editedDate, setEditedDate] = useState(item?.date);
+  const [editedName, setEditedName] = useState("");
+  const [editedDate, setEditedDate] = useState("");
+
+  useEffect(() => {
+    // Synchronize editedName and editedDate with the selected item
+    if (item) {
+      setEditedName(item.listItem);
+      setEditedDate(item.date);
+    }
+  }, [item]);
+
+  const onListItemChanged = (e)=> setEditedName(e.target.value);
+  const onDateChanged = (e)=> setEditedDate(e.target.value);
+
   const handleEdit  = (id)=>{
     setEditId(id); // setting the editId 
   }
@@ -38,7 +50,7 @@ const LineItems = ({ searchResults }) => {
                     placeholder='What to do...'
                     required
                     value={editedName}
-                    onChange={(e) => setEditedName(e.target.value)}
+                    onChange={onListItemChanged}
                   />
                   <input 
                     type="datetime-local" 
@@ -46,7 +58,7 @@ const LineItems = ({ searchResults }) => {
                     id="inputText" 
                     required
                     value={editedDate}
-                    onChange={(e) => setEditedDate(e.target.value)}
+                    onChange={onDateChanged}
                   />
                   <div className='flex items-center justify-center'>
                     <button className='bg-green-700 text-white font-montserrat py-2.5 w-[300px] font-medium text-xl rounded-md xs:w-[420px] sm:w-[600px] md:w-[690px]'>
